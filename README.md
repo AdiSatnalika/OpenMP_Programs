@@ -14,3 +14,5 @@ OpenMP does a lot of things automatically for us programmers. However, that mean
 Step 3: Include omp.h
 
 While you may not need it right away, it’s a good idea to go ahead and include omp.h in your source code. Visual Studio will already know the location, so all you have to do is type “#include <omp.h>” at the top of your source code.
+
+Step 4 : Copy the above codes and try them out .
