@@ -1,0 +1,47 @@
+#include<stdio.h>
+#include<stdlib.h>
+#include<omp.h>
+
+#define ARRSIZE 15
+
+int main(int argc, char **argv)
+{
+	int myid, size;
+	int i;
+	int *A, *B, *C;
+
+	A = (int *)malloc(ARRSIZE * sizeof(int));
+	B = (int *)malloc(ARRSIZE * sizeof(int));
+	C= (int *)malloc(ARRSIZE * sizeof(int));
+
+	for (i = 0; i < ARRSIZE; i++)
+	{
+		A[i] = i;
+		B[i] = i+1;
+	}
+
+	printf("\n Initial Data:\n");
+	for (i = 0; i < ARRSIZE; i++)
+	{
+		printf("\t%d\t%d\n", A[i], B[i]);
+	}
+#pragma omp parallel for default(none) shared(A,B,C)
+	for (i = 0; i < ARRSIZE; i++)
+	{
+		C[i] = A[i] + B[i];
+
+	}
+	printf("\nVector Addition Output :\n");
+	for (i = 0; i < ARRSIZE; i++)
+	{
+		printf("\t%d\n", C[i]);
+
+	}
+
+	printf("\n Program Exiting");
+	exit(0);
+
+
+
+
+}
